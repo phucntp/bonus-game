@@ -14,6 +14,11 @@ export class CreateUserDto {
   @ApiProperty({
     nullable: true,
   })
+  readonly password?: string;
+
+  @ApiProperty({
+    nullable: true,
+  })
   readonly deleted?: boolean;
 
   @ApiProperty({

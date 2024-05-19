@@ -9,6 +9,7 @@ import { PrizeModule } from './prize/prize.module';
 import { PermissionModule } from './permissions/permission.module';
 import { BonusModule } from './bonus/bonus.module';
 import { DatePrizeModule } from './date-prize/datePrize.module';
+import { IamModule } from './iam/iam.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { DatePrizeModule } from './date-prize/datePrize.module';
     PermissionModule,
     BonusModule,
     DatePrizeModule,
+    IamModule,
   ],
   controllers: [AppController],
   providers: [AppService],

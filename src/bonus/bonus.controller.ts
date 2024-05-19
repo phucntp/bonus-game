@@ -10,10 +10,14 @@ import {
 import { BonusService } from './bonus.service';
 import { Bonus } from './interfaces/bonus.interface';
 import { BonusDto } from './dto/bonus.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthType } from 'src/iam/login/enums/auth-type.enum';
+import { AuthGuard } from 'src/iam/login/decorators/auth-guard.decorator';
 
 @Controller('bonus')
 @ApiTags('bonus')
+@AuthGuard(AuthType.Bearer)
+@ApiBearerAuth()
 export class BonusController {
   constructor(private readonly bonusService: BonusService) {}
 

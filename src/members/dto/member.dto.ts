@@ -27,6 +27,14 @@ export class MemberDto {
   admin?: string;
 
   @ApiProperty({ nullable: true })
+  @IsString()
+  code?: string;
+
+  @ApiProperty({ nullable: true })
+  @IsString()
+  id?: string;
+
+  @ApiProperty({ nullable: true })
   @IsBoolean()
   deleted?: boolean;
 }

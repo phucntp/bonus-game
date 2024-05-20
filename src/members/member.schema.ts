@@ -26,6 +26,12 @@ export class Member {
 
   @Prop()
   deleted: boolean;
+
+  @Prop()
+  code: string;
+
+  @Prop()
+  id: string;
 }
 
 export const MemberSchema = SchemaFactory.createForClass(Member);

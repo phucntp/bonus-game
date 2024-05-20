@@ -8,4 +8,6 @@ export interface Member {
   ip?: string;
   admin?: User;
   deleted?: boolean;
+  code?: string;
+  id?: string;
 }

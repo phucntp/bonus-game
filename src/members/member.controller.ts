@@ -51,4 +51,10 @@ export class MemberController {
   async remove(@Param('id') id: string): Promise<any> {
     return this.memberService.remove(id);
   }
+
+  @Post('upload-excel')
+  async uploadExcel(@Body() ids: string[]): Promise<any> {
+    const res = await this.memberService.removeMembers(ids);
+    return res;
+  }
 }

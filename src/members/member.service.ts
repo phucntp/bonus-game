@@ -35,4 +35,17 @@ export class MemberService {
     );
     return res as any;
   }
+
+  async uploadExcel(dataExcels: MemberDto[]): Promise<Member> {
+    const res = await Promise.all(
+      dataExcels.map(async (data) => {
+        const findData = await this.memberModel.findById(data._id)
+        if(findData) {
+          return this.memberModel.findByIdAndUpdate(id, { data });
+        }
+        return this.create(data);
+      }),
+    );
+    return res as any;
+  }
 }

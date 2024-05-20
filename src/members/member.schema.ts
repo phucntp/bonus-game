@@ -31,7 +31,7 @@ export class Member {
   code: string;
 
   @Prop()
-  id: string;
+  _id: string;
 }
 
 export const MemberSchema = SchemaFactory.createForClass(Member);

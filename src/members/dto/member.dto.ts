@@ -32,7 +32,7 @@ export class MemberDto {
 
   @ApiProperty({ nullable: true })
   @IsString()
-  id?: string;
+  _id?: string;
 
   @ApiProperty({ nullable: true })
   @IsBoolean()

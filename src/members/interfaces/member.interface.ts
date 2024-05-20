@@ -9,5 +9,5 @@ export interface Member {
   admin?: User;
   deleted?: boolean;
   code?: string;
-  id?: string;
+  _id?: string;
 }

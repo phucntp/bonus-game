@@ -20,7 +20,10 @@ export class DatePrizeService {
   }
 
   async update(id: string, updateDatePrize: DatePrizeDto): Promise<DatePrize> {
-    return this.datePrizeModel.findByIdAndUpdate(id, updateDatePrize);
+    return this.datePrizeModel.findByIdAndUpdate(id, updateDatePrize, {
+      new: true,
+      useFindAndModify: false,
+    });
   }
 
   async remove(id: string): Promise<DatePrize> {

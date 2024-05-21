@@ -2,13 +2,13 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { Permission } from 'src/permissions/permission.schema';
 
-@Schema()
+@Schema({ timestamps: true, minimize: false })
 export class User {
   @Prop()
   name: string;
 
   @Prop()
-  email: number;
+  email: string;
 
   @Prop()
   password: string;

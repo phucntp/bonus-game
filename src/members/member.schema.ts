@@ -4,7 +4,7 @@ import { User } from 'src/users/user.schema';
 
 export type UserDocument = HydratedDocument<Member>;
 
-@Schema()
+@Schema({ timestamps: true, minimize: false })
 export class Member {
   @Prop()
   quantity: number;
@@ -31,7 +31,7 @@ export class Member {
   code: string;
 
   @Prop()
-  _id: string;
+  id: string;
 }
 
 export const MemberSchema = SchemaFactory.createForClass(Member);

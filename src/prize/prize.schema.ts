@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { User } from 'src/users/user.schema';
 
-@Schema()
+@Schema({ timestamps: true, minimize: false })
 export class Prize {
   @Prop()
   name: string;

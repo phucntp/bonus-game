@@ -11,7 +11,7 @@ export class BonusService {
   ) {}
 
   async findAll(): Promise<Bonus[]> {
-    return await this.bonusModel.find().exec();
+    return await this.bonusModel.find().populate('User').exec();
   }
 
   async create(createBonus: BonusDto): Promise<Bonus> {
@@ -20,7 +20,10 @@ export class BonusService {
   }
 
   async update(id: string, updateBonus: BonusDto): Promise<Bonus> {
-    return this.bonusModel.findByIdAndUpdate(id, updateBonus);
+    return this.bonusModel.findByIdAndUpdate(id, updateBonus, {
+      new: true,
+      useFindAndModify: false,
+    });
   }
 
   async remove(id: string): Promise<Bonus> {
@@ -30,7 +33,7 @@ export class BonusService {
   async removeBonus(ids: string[]): Promise<Bonus> {
     const res = await Promise.all(
       ids.map((id) => {
-        return this.bonusModel.findByIdAndUpdate(id, { deleted: true });
+        return this.update(id, { deleted: true });
       }),
     );
     return res as any;

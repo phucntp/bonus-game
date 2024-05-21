@@ -1,10 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsNumber, IsString } from 'class-validator';
 
-export class MemberDto {
+export class MemberExcelDto {
   @ApiProperty({ nullable: true })
-  @IsNumber()
-  quantity?: number;
+  @IsString()
+  nameAdmin?: string;
 
   @ApiProperty({ nullable: true })
   @IsNumber()

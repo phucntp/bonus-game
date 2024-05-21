@@ -8,11 +8,12 @@ import {
   Delete,
 } from '@nestjs/common';
 import { MemberService } from './member.service';
-import { Member } from './interfaces/member.interface';
 import { MemberDto } from './dto/member.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from 'src/iam/login/decorators/auth-guard.decorator';
 import { AuthType } from 'src/iam/login/enums/auth-type.enum';
+import { Member } from './member.schema';
+import { MemberExcelDto } from './dto/member-excel.dto';
 
 @Controller('member')
 @ApiTags('member')
@@ -38,8 +39,8 @@ export class MemberController {
   }
 
   @Post('remove-members')
-  async removeMembers(@Body() ids: string[]): Promise<any> {
-    const res = await this.memberService.removeMembers(ids);
+  async removeMembers(@Body() data: { ids: string[] }): Promise<any> {
+    const res = await this.memberService.removeMembers(data.ids);
     return res;
   }
 
@@ -57,8 +58,8 @@ export class MemberController {
   }
 
   @Post('upload-excel')
-  async uploadExcel(@Body() ids: string[]): Promise<any> {
-    const res = await this.memberService.removeMembers(ids);
+  async uploadExcel(@Body() data: MemberExcelDto[]): Promise<any> {
+    const res = await this.memberService.uploadExcel(data);
     return res;
   }
 }

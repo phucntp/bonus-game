@@ -37,7 +37,7 @@ export class AuthService {
       );
       return {
         accessToken: accessToken,
-        user: pick(findUser, ['name', 'email']),
+        user: pick(findUser, ['name', 'email', '_id']),
       };
     } else {
       throw new Error('Tên hoặc password không đúng!');

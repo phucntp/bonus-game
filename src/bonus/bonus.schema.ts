@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { User } from 'src/users/user.schema';
 
-@Schema()
+@Schema({ timestamps: true, minimize: false })
 export class Bonus {
   @Prop()
   numberMember: number;
@@ -15,6 +15,9 @@ export class Bonus {
 
   @Prop()
   ip: string;
+
+  @Prop({ type: Date })
+  date: Date;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
   implementer: User;

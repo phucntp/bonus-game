@@ -11,7 +11,7 @@ export class MemberService {
   ) {}
 
   async findAll(): Promise<Member[]> {
-    return await this.memberModel.find().exec();
+    return await this.memberModel.find().populate('admin').exec();
   }
 
   async create(createMember: MemberDto): Promise<Member> {
@@ -39,9 +39,9 @@ export class MemberService {
   async uploadExcel(dataExcels: MemberDto[]): Promise<Member> {
     const res = await Promise.all(
       dataExcels.map(async (data) => {
-        const findData = await this.memberModel.findById(data._id)
-        if(findData) {
-          return this.memberModel.findByIdAndUpdate(id, { data });
+        const findData = await this.memberModel.findById(data._id);
+        if (findData) {
+          return this.memberModel.findByIdAndUpdate(data._id, { data });
         }
         return this.create(data);
       }),

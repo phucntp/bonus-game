@@ -10,10 +10,14 @@ import {
 import { MemberService } from './member.service';
 import { Member } from './interfaces/member.interface';
 import { MemberDto } from './dto/member.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from 'src/iam/login/decorators/auth-guard.decorator';
+import { AuthType } from 'src/iam/login/enums/auth-type.enum';
 
 @Controller('member')
 @ApiTags('member')
+@AuthGuard(AuthType.Bearer)
+@ApiBearerAuth()
 export class MemberController {
   constructor(private readonly memberService: MemberService) {}
 

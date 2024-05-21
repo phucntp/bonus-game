@@ -16,7 +16,7 @@ export class Bonus {
   @Prop()
   ip: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'users' })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
   implementer: User;
 
   @Prop()

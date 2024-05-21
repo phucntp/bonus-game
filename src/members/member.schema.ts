@@ -21,7 +21,7 @@ export class Member {
   @Prop()
   ip: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'users' })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
   admin: User;
 
   @Prop()

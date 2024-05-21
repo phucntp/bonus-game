@@ -1,20 +1,20 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
+import mongoose from 'mongoose';
 import { Permission } from 'src/permissions/permission.schema';
 
 @Schema()
-export class User extends Document {
+export class User {
   @Prop()
   name: string;
 
   @Prop()
-  age: number;
+  email: number;
 
   @Prop()
   password: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'permissions' })
-  user: Permission;
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Permission' })
+  permission: Permission;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

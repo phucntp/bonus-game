@@ -10,7 +10,7 @@ export class Permission extends Document {
   @Prop()
   deleted: boolean;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'users' })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
   user: User;
 }
 

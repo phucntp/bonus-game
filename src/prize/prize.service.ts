@@ -11,7 +11,7 @@ export class PrizeService {
   ) {}
 
   async findAll(): Promise<Prize[]> {
-    return await this.prizeModel.find().exec();
+    return await this.prizeModel.find({ deleted: { $ne: true } }).exec();
   }
 
   async create(createPrize: PrizeDto): Promise<Prize> {
@@ -33,7 +33,7 @@ export class PrizeService {
   async removePrizes(ids: string[]): Promise<Prize> {
     const res = await Promise.all(
       ids.map((id) => {
-        return this.prizeModel.findByIdAndUpdate(id, { deleted: true });
+        return this.update(id, { deleted: true });
       }),
     );
     return res as any;

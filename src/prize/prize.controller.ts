@@ -34,8 +34,8 @@ export class PrizeController {
   }
 
   @Post('remove-prizes')
-  async removePrizes(@Body() ids: string[]): Promise<any> {
-    const res = await this.prizeService.removePrizes(ids);
+  async removePrizes(@Body() data: { ids: string[] }): Promise<any> {
+    const res = await this.prizeService.removePrizes(data.ids);
     return res;
   }
 

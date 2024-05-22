@@ -1,30 +1,30 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsNumber, IsString } from 'class-validator';
 
-export class PrizeDto {
+export class BonusDto {
   @ApiProperty({ nullable: true })
-  @IsString()
-  name?: string;
+  @IsNumber()
+  numberMember?: number;
 
   @ApiProperty({ nullable: true })
   @IsNumber()
   numberBonus?: number;
 
   @ApiProperty({ nullable: true })
-  @IsNumber()
-  percentWin?: number;
+  @IsBoolean()
+  sent?: boolean;
 
   @ApiProperty({ nullable: true })
   @IsString()
-  urlImage?: string;
-
-  @ApiProperty({ nullable: true })
-  @IsNumber()
-  order?: number;
+  ip?: string;
 
   @ApiProperty({ nullable: true })
   @IsString()
-  status?: string;
+  date?: string;
+
+  @ApiProperty({ nullable: true })
+  @IsString()
+  implementer?: string;
 
   @ApiProperty({ nullable: true })
   @IsBoolean()

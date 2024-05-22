@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -9,6 +9,7 @@ import { PermissionModule } from './permissions/permission.module';
 import { BonusModule } from './bonus/bonus.module';
 import { DatePrizeModule } from './date-prize/datePrize.module';
 import { IamModule } from './iam/iam.module';
+import { FileUploadModule } from './uploads/upload.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { IamModule } from './iam/iam.module';
     PermissionModule,
     BonusModule,
     DatePrizeModule,
+    // forwardRef(() => FileUploadModule),
   ],
   controllers: [AppController],
   providers: [AppService],

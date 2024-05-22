@@ -10,10 +10,14 @@ import {
 import { PermissionService } from './permission.service';
 import { Permission } from './interfaces/permission.interface';
 import { PermissionDto } from './dto/permission.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from 'src/iam/login/decorators/auth-guard.decorator';
+import { AuthType } from 'src/iam/login/enums/auth-type.enum';
 
 @Controller('permission')
 @ApiTags('Permission')
+@AuthGuard(AuthType.Bearer)
+@ApiBearerAuth()
 export class PermissionController {
   constructor(private readonly permissionService: PermissionService) {}
 

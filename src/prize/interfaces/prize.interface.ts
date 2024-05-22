@@ -2,7 +2,7 @@ export interface Prize {
   name?: string;
   numberBonus?: number;
   percentWin?: number;
-  url?: string;
+  urlImage?: string;
   order?: number;
   status?: string;
   deleted?: boolean;

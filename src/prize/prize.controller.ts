@@ -10,10 +10,14 @@ import {
 import { PrizeService } from './prize.service';
 import { Prize } from './interfaces/prize.interface';
 import { PrizeDto } from './dto/prize.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from 'src/iam/login/decorators/auth-guard.decorator';
+import { AuthType } from 'src/iam/login/enums/auth-type.enum';
 
 @Controller('prize')
 @ApiTags('prize')
+@AuthGuard(AuthType.Bearer)
+@ApiBearerAuth()
 export class PrizeController {
   constructor(private readonly prizeService: PrizeService) {}
 

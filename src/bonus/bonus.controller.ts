@@ -37,8 +37,8 @@ export class BonusController {
     return res;
   }
 
-  @Post('remove-bonuss')
-  async removeBonuss(@Body() ids: string[]): Promise<any> {
+  @Post('remove-bonuses')
+  async removeBonuses(@Body() ids: string[]): Promise<any> {
     const res = await this.bonusService.removeBonus(ids);
     return res;
   }

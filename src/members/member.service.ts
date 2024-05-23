@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { MemberDto } from './dto/member.dto';
@@ -33,8 +33,7 @@ export class MemberService {
         useFindAndModify: false,
       });
     } catch (error) {
-      console.error('Error updating bonus:', error);
-      throw error;
+      throw new HttpException(JSON.stringify(error), HttpStatus.BAD_REQUEST);
     }
   }
 

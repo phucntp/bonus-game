@@ -15,6 +15,10 @@ export class User {
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Permission' })
   permission: Permission;
+
+  @Prop({ type: Boolean, default: false})
+  deleted: boolean;
+
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

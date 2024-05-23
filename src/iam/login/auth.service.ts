@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { AuthDto } from './dto/auth.dto';
 import { Model } from 'mongoose';
@@ -40,7 +40,10 @@ export class AuthService {
         user: pick(findUser, ['name', 'email', '_id']),
       };
     } else {
-      throw new Error('Tên hoặc password không đúng!');
+      throw new HttpException(
+        'Tên hoặc password không đúng!',
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }

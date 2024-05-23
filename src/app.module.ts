@@ -21,7 +21,7 @@ import { FileUploadModule } from './uploads/upload.module';
     PermissionModule,
     BonusModule,
     DatePrizeModule,
-    // forwardRef(() => FileUploadModule),
+    // FileUploadModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -27,7 +27,7 @@ export class BonusController {
     message?: string;
     statusCode?: number;
   }> {
-    const res = await this.bonusService.findAll();
+    const res = await this.bonusService.findAll(true);
     return { data: res };
   }
 

@@ -10,8 +10,8 @@ export class BonusService {
     @InjectModel('Bonus') private readonly bonusModel: Model<Bonus>,
   ) {}
 
-  async findAll(): Promise<Bonus[]> {
-    return await this.bonusModel.find().populate('User').exec();
+  async findAll(sent?: boolean): Promise<Bonus[]> {
+    return await this.bonusModel.find(sent ? { sent: true } : {sent: {$ne: true}}).populate('User').exec();
   }
 
   async create(createBonus: BonusDto): Promise<Bonus> {
